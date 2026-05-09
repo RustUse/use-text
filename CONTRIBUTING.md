@@ -1,26 +1,27 @@
 # Contributing
 
-RustUse/use-rust is intentionally small at the API level even though it is now a multi-crate workspace. Contributions should keep the public Rust primitives explicit, typed, and pragmatic.
+RustUse/use-text is intentionally small at the API level even though it is a multi-crate workspace.
+Contributions should keep the public text primitives explicit, typed, and pragmatic.
 
 ## Development flow
 
 1. Make the smallest useful change.
-2. Add or update tests for public behavior changes.
-3. Prefer direct helpers over broad framework abstractions.
-4. Keep public docs aligned with the actual local Cargo, crate, version, and release-reporting behavior.
+2. Add or update tests for any public behavior change.
+3. Prefer direct helpers over broad parsing frameworks.
+4. Keep README examples aligned with the actual crate APIs.
 
 ## Local validation
 
 ```sh
 cargo fmt --all --check
 cargo check --workspace --all-targets --all-features
-cargo clippy --all-targets --all-features -- -D warnings
+cargo clippy --workspace --all-targets --all-features -- -D warnings
 cargo test --workspace --all-features
 ```
 
 ## Scope guidance
 
-- `use-rust` is the RustUse Rust ecosystem primitives set, not a CLI and not a general DevOps automation layer.
-- Prefer reusable typed primitives over shell-oriented workflows.
-- Avoid network calls and avoid real publish operations in library code.
-- Keep release checks reporting-oriented and easy to test with temporary fixture directories.
+- `use-text` is the RustUse text primitives set, not a CLI and not a full NLP system.
+- Prefer reusable, testable primitives over framework-style abstractions.
+- Keep slugging, casing, tokenization, and line handling predictable and well documented.
+- Avoid heavy dependencies unless they materially simplify the implementation.

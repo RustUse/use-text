@@ -70,7 +70,7 @@ impl fmt::Display for CaseError {
         match self {
             Self::UnsupportedTarget(case) => {
                 write!(formatter, "unsupported conversion target: {case:?}")
-            }
+            },
         }
     }
 }
@@ -278,9 +278,9 @@ fn is_snake_case(input: &str) -> bool {
         && !input.starts_with('_')
         && !input.ends_with('_')
         && !input.contains("__")
-        && input
-            .chars()
-            .all(|character| character.is_ascii_lowercase() || character.is_ascii_digit() || character == '_')
+        && input.chars().all(|character| {
+            character.is_ascii_lowercase() || character.is_ascii_digit() || character == '_'
+        })
 }
 
 fn is_constant_case(input: &str) -> bool {
@@ -288,9 +288,9 @@ fn is_constant_case(input: &str) -> bool {
         && !input.starts_with('_')
         && !input.ends_with('_')
         && !input.contains("__")
-        && input
-            .chars()
-            .all(|character| character.is_ascii_uppercase() || character.is_ascii_digit() || character == '_')
+        && input.chars().all(|character| {
+            character.is_ascii_uppercase() || character.is_ascii_digit() || character == '_'
+        })
 }
 
 fn is_kebab_case(input: &str) -> bool {
@@ -298,9 +298,9 @@ fn is_kebab_case(input: &str) -> bool {
         && !input.starts_with('-')
         && !input.ends_with('-')
         && !input.contains("--")
-        && input
-            .chars()
-            .all(|character| character.is_ascii_lowercase() || character.is_ascii_digit() || character == '-')
+        && input.chars().all(|character| {
+            character.is_ascii_lowercase() || character.is_ascii_digit() || character == '-'
+        })
 }
 
 fn is_title_case(input: &str) -> bool {
@@ -311,7 +311,9 @@ fn is_title_case(input: &str) -> bool {
                 return false;
             };
 
-            first.is_uppercase() && characters.all(|character| !character.is_alphabetic() || character.is_lowercase())
+            first.is_uppercase()
+                && characters
+                    .all(|character| !character.is_alphabetic() || character.is_lowercase())
         })
 }
 
@@ -369,7 +371,10 @@ mod tests {
     fn collapses_punctuation_and_repeated_separators() {
         assert_eq!(to_snake_case("hello---world"), "hello_world");
         assert_eq!(to_kebab_case("hello___world"), "hello-world");
-        assert_eq!(to_title_case("  release...candidate  "), "Release Candidate");
+        assert_eq!(
+            to_title_case("  release...candidate  "),
+            "Release Candidate"
+        );
     }
 
     #[test]
@@ -391,13 +396,19 @@ mod tests {
     #[test]
     fn case_conversion_reports_unsupported_targets() {
         let conversion = CaseConversion::new(TextCase::Snake, TextCase::Mixed);
-        assert_eq!(conversion.apply("hello_world"), Err(CaseError::UnsupportedTarget(TextCase::Mixed)));
+        assert_eq!(
+            conversion.apply("hello_world"),
+            Err(CaseError::UnsupportedTarget(TextCase::Mixed))
+        );
     }
 
     #[test]
     fn case_conversion_applies_supported_targets() {
         let conversion = CaseConversion::new(TextCase::Snake, TextCase::Pascal);
-        assert_eq!(conversion.apply("hello_world"), Ok(String::from("HelloWorld")));
+        assert_eq!(
+            conversion.apply("hello_world"),
+            Ok(String::from("HelloWorld"))
+        );
         assert_eq!(conversion.source(), TextCase::Snake);
         assert_eq!(conversion.target(), TextCase::Pascal);
     }

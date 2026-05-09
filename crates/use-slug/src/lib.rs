@@ -103,9 +103,9 @@ pub fn is_slug(input: &str) -> bool {
         && !input.starts_with('-')
         && !input.ends_with('-')
         && !input.contains("--")
-        && input
-            .chars()
-            .all(|character| character.is_ascii_lowercase() || character.is_ascii_digit() || character == '-')
+        && input.chars().all(|character| {
+            character.is_ascii_lowercase() || character.is_ascii_digit() || character == '-'
+        })
 }
 
 /// Returns the normalized slug segments.
@@ -136,11 +136,13 @@ fn slugify_with_options(input: &str, options: SlugOptions) -> String {
             continue;
         }
 
-        if character.is_whitespace() || (character.is_ascii() && !character.is_ascii_alphanumeric()) {
-            if !output.is_empty() && !previous_was_separator {
-                output.push(separator);
-                previous_was_separator = true;
-            }
+        if (character.is_whitespace()
+            || (character.is_ascii() && !character.is_ascii_alphanumeric()))
+            && !output.is_empty()
+            && !previous_was_separator
+        {
+            output.push(separator);
+            previous_was_separator = true;
         }
     }
 
@@ -210,12 +212,18 @@ mod tests {
         assert!(is_slug("release-candidate-1"));
         assert!(!is_slug("Release-Candidate-1"));
         assert_eq!(truncate_slug("release candidate patch", 14), "release");
-        assert_eq!(truncate_slug("release candidate patch", 20), "release-candidate");
+        assert_eq!(
+            truncate_slug("release candidate patch", 20),
+            "release-candidate"
+        );
     }
 
     #[test]
     fn exposes_slug_words_and_custom_options() {
-        assert_eq!(slug_words("Release Candidate"), vec![String::from("release"), String::from("candidate")]);
+        assert_eq!(
+            slug_words("Release Candidate"),
+            vec![String::from("release"), String::from("candidate")]
+        );
 
         let slug = Slug::from_text_with_options(
             "Release Candidate",
