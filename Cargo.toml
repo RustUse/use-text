@@ -1,0 +1,23 @@
+[workspace]
+members = [
+    "crates/use-case",
+    "crates/use-slug",
+    "crates/use-truncate",
+    "crates/use-normalize",
+    "crates/use-readable",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/RustUse/use-text"
+rust-version = "1.85"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+module_name_repetitions = "allow"
