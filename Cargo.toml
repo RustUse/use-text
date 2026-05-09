@@ -1,0 +1,34 @@
+[workspace]
+members = [
+    "crates/use-text",
+    "crates/use-case",
+    "crates/use-slug",
+    "crates/use-token",
+    "crates/use-word",
+    "crates/use-line",
+]
+resolver = "2"
+
+[workspace.package]
+authors = ["RustUse Contributors"]
+edition = "2024"
+homepage = "https://rustuse.org"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/RustUse/use-text"
+rust-version = "1.95.0"
+version = "0.1.0"
+
+[workspace.dependencies]
+use-case = { version = "0.1.0", path = "crates/use-case" }
+use-line = { version = "0.1.0", path = "crates/use-line" }
+use-slug = { version = "0.1.0", path = "crates/use-slug" }
+use-token = { version = "0.1.0", path = "crates/use-token" }
+use-word = { version = "0.1.0", path = "crates/use-word" }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.metadata.rustuse.release]
+publish = false
+versioning = "lockstep-0.x"

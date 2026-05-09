@@ -1,0 +1,21 @@
+[package]
+name = "use-text"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme = "README.md"
+rust-version.workspace = true
+description = "Composable text primitives for RustUse."
+
+[dependencies]
+use-case.workspace = true
+use-line.workspace = true
+use-slug.workspace = true
+use-token.workspace = true
+use-word.workspace = true
+
+[lints]
+workspace = true
