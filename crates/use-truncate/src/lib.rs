@@ -43,7 +43,11 @@ pub fn truncate_words(input: &str, max_words: usize) -> String {
         return String::new();
     }
 
-    input.split_whitespace().take(max_words).collect::<Vec<_>>().join(" ")
+    input
+        .split_whitespace()
+        .take(max_words)
+        .collect::<Vec<_>>()
+        .join(" ")
 }
 
 /// Truncates text by `char` count and appends `…` when truncation occurs.
@@ -99,7 +103,11 @@ pub fn truncate_words_with_ellipsis(input: &str, max_words: usize) -> String {
         return input.to_string();
     }
 
-    let mut truncated = words.into_iter().take(max_words).collect::<Vec<_>>().join(" ");
+    let mut truncated = words
+        .into_iter()
+        .take(max_words)
+        .collect::<Vec<_>>()
+        .join(" ");
     truncated.push(ELLIPSIS);
     truncated
 }
@@ -142,6 +150,9 @@ mod tests {
     #[test]
     fn handles_unicode_input_safely() {
         assert_eq!(truncate_with_ellipsis("Grüße aus Köln", 7), "Grüße …");
-        assert_eq!(truncate_words_with_ellipsis("こんにちは 世界 Rust", 2), "こんにちは 世界…");
+        assert_eq!(
+            truncate_words_with_ellipsis("こんにちは 世界 Rust", 2),
+            "こんにちは 世界…"
+        );
     }
 }

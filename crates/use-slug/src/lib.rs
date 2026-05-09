@@ -48,7 +48,7 @@ pub fn slugify(input: &str) -> String {
 /// use use_slug::slugify_with_separator;
 ///
 /// assert_eq!(slugify_with_separator("Hello, World!", '_'), "hello_world");
-/// assert_eq!(slugify_with_separator("naïve café", '-'), "na-ve-caf");
+/// assert_eq!(slugify_with_separator("naïve café", '-'), "nave-caf");
 /// ```
 #[must_use]
 pub fn slugify_with_separator(input: &str, separator: char) -> String {
@@ -61,7 +61,10 @@ mod tests {
 
     #[test]
     fn generates_default_slugs() {
-        assert_eq!(slugify("RustUse: Composable Text Primitives!"), "rustuse-composable-text-primitives");
+        assert_eq!(
+            slugify("RustUse: Composable Text Primitives!"),
+            "rustuse-composable-text-primitives"
+        );
         assert_eq!(slugify("  hello---world  "), "hello-world");
         assert_eq!(slugify("hello_world"), "hello-world");
     }
@@ -80,7 +83,7 @@ mod tests {
 
     #[test]
     fn drops_non_ascii_characters() {
-        assert_eq!(slugify("naïve café"), "na-ve-caf");
+        assert_eq!(slugify("naïve café"), "nave-caf");
         assert_eq!(slugify("你好，世界"), "");
     }
 

@@ -60,7 +60,11 @@ pub fn collapse_whitespace(input: &str) -> String {
 /// ```
 #[must_use]
 pub fn trim_lines(input: &str) -> String {
-    input.split('\n').map(str::trim).collect::<Vec<_>>().join("\n")
+    input
+        .split('\n')
+        .map(str::trim)
+        .collect::<Vec<_>>()
+        .join("\n")
 }
 
 /// Removes lines that are empty after trimming and returns trimmed lines.
@@ -110,7 +114,10 @@ mod tests {
 
     #[test]
     fn normalizes_whitespace() {
-        assert_eq!(normalize_whitespace("  composable   text\n\nprimitives  "), "composable text primitives");
+        assert_eq!(
+            normalize_whitespace("  composable   text\n\nprimitives  "),
+            "composable text primitives"
+        );
         assert_eq!(normalize_whitespace("\t spaced \t"), "spaced");
     }
 

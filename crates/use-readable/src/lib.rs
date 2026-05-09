@@ -129,8 +129,8 @@ pub fn estimated_reading_time_minutes_at(input: &str, words_per_minute: usize) -
 #[cfg(test)]
 mod tests {
     use super::{
-        byte_count, char_count, estimated_reading_time_minutes,
-        estimated_reading_time_minutes_at, sentence_count, word_count,
+        byte_count, char_count, estimated_reading_time_minutes, estimated_reading_time_minutes_at,
+        sentence_count, word_count,
     };
 
     #[test]
@@ -155,7 +155,10 @@ mod tests {
 
     #[test]
     fn estimates_reading_time_with_custom_speed() {
-        assert_eq!(estimated_reading_time_minutes_at("one two three four", 2), Some(2));
+        assert_eq!(
+            estimated_reading_time_minutes_at("one two three four", 2),
+            Some(2)
+        );
         assert_eq!(estimated_reading_time_minutes_at("hello", 200), Some(1));
         assert_eq!(estimated_reading_time_minutes_at("", 200), Some(0));
     }
