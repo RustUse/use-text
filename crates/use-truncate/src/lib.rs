@@ -100,7 +100,7 @@ pub fn truncate_words_with_ellipsis(input: &str, max_words: usize) -> String {
 
     let words: Vec<&str> = input.split_whitespace().collect();
     if words.len() <= max_words {
-        return input.to_string();
+        return words.join(" ");
     }
 
     let mut truncated = words
@@ -144,6 +144,7 @@ mod tests {
     fn adds_ellipsis_for_word_truncation() {
         assert_eq!(truncate_words_with_ellipsis("one two three", 2), "one two…");
         assert_eq!(truncate_words_with_ellipsis("one two", 2), "one two");
+        assert_eq!(truncate_words_with_ellipsis(" one\n two\t", 2), "one two");
         assert_eq!(truncate_words_with_ellipsis("one two", 0), "");
     }
 
