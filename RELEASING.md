@@ -33,6 +33,29 @@ Use the `Publish` workflow with:
 The workflow will run formatting, linting, tests, and `cargo check` before it attempts any publish
 step.
 
+## Post-initial-release automation
+
+After the first manual crates.io release wave for the `use-text` workspace,
+the repository can use the `release-plz` workflows for follow-up releases.
+
+### Release PR automation
+
+- Workflow: `Release PR Automation`
+- Trigger: pushes to `main` or manual dispatch
+- Purpose: opens or updates a release pull request based on
+  `release-plz.toml` and the current changelog rules
+
+### Release publish automation
+
+- Workflow: `Release Publish Automation`
+- Trigger: manual dispatch only
+- Required input: `post-initial-release = true`
+- Purpose: confirms all published `use-text` workspace crates already exist on
+  crates.io, then runs `release-plz release`
+
+Real release-plz publishes still require `CARGO_REGISTRY_TOKEN` unless the
+repository later moves to trusted publishing.
+
 ## Local dry-run examples
 
 ```sh

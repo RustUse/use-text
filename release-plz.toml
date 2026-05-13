@@ -1,0 +1,63 @@
+[workspace]
+release = false
+release_always = false
+changelog_update = false
+pr_labels = ["release"]
+max_analyze_commits = 2000
+
+[[package]]
+name = "use-case"
+release = true
+version_group = "rustuse-text"
+
+[[package]]
+name = "use-slug"
+release = true
+version_group = "rustuse-text"
+
+[[package]]
+name = "use-token"
+release = true
+version_group = "rustuse-text"
+
+[[package]]
+name = "use-word"
+release = true
+version_group = "rustuse-text"
+
+[[package]]
+name = "use-line"
+release = true
+version_group = "rustuse-text"
+
+[[package]]
+name = "use-text"
+release = true
+version_group = "rustuse-text"
+changelog_update = true
+changelog_path = "./CHANGELOG.md"
+changelog_include = [
+    "use-case",
+    "use-slug",
+    "use-token",
+    "use-word",
+    "use-line",
+]
+
+[changelog]
+header = """# Changelog
+
+## Unreleased
+"""
+protect_breaking_commits = true
+sort_commits = "oldest"
+commit_parsers = [
+  { message = "^feat(?:\\([^)]+\\))?!?: .+", group = "Added" },
+  { message = "^fix(?:\\([^)]+\\))?!?: .+", group = "Fixed" },
+  { message = "^security(?:\\([^)]+\\))?!?: .+", group = "Security" },
+  { message = "^(?:refactor|perf|change)(?:\\([^)]+\\))?!?: .+", group = "Changed" },
+  { message = "^docs(?:\\([^)]+\\))?!?: .+", group = "Documentation" },
+  { message = "^(?:build|ci|chore|deps|test)(?:\\([^)]+\\))?!?: .+", group = "Tooling" },
+  { footer = "^changelog: ?ignore$", skip = true },
+  { message = "^.*", group = "Changed" },
+]

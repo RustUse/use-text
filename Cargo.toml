@@ -32,3 +32,11 @@ unsafe_code = "forbid"
 [workspace.metadata.rustuse.release]
 publish = false
 versioning = "lockstep-0.x"
+first-publish-candidates = [
+    "use-case",
+    "use-slug",
+    "use-token",
+    "use-word",
+    "use-line",
+    "use-text",
+]

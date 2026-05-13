@@ -1,5 +1,6 @@
 [package]
 name = "use-line"
+publish = true
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -9,6 +10,12 @@ homepage.workspace = true
 readme = "README.md"
 rust-version.workspace = true
 description = "Composable line-level text primitives for RustUse."
+documentation = "https://docs.rs/use-line"
+keywords = ["text", "line", "newline", "indent", "string"]
+categories = ["text-processing"]
 
 [lints]
 workspace = true
+
+[package.metadata.docs.rs]
+all-features = true

@@ -1,5 +1,6 @@
 [package]
 name = "use-token"
+publish = true
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -9,6 +10,12 @@ homepage.workspace = true
 readme = "README.md"
 rust-version.workspace = true
 description = "Composable tokenization primitives for RustUse."
+documentation = "https://docs.rs/use-token"
+keywords = ["text", "token", "tokenize", "string", "parser"]
+categories = ["text-processing"]
 
 [lints]
 workspace = true
+
+[package.metadata.docs.rs]
+all-features = true

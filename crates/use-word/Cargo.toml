@@ -1,5 +1,6 @@
 [package]
 name = "use-word"
+publish = true
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -9,6 +10,12 @@ homepage.workspace = true
 readme = "README.md"
 rust-version.workspace = true
 description = "Composable word-level text primitives for RustUse."
+documentation = "https://docs.rs/use-word"
+keywords = ["text", "word", "string", "search", "normalize"]
+categories = ["text-processing"]
 
 [lints]
 workspace = true
+
+[package.metadata.docs.rs]
+all-features = true

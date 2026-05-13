@@ -1,5 +1,6 @@
 [package]
 name = "use-slug"
+publish = true
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -9,6 +10,12 @@ homepage.workspace = true
 readme = "README.md"
 rust-version.workspace = true
 description = "Composable slug and URL-safe text primitives for RustUse."
+documentation = "https://docs.rs/use-slug"
+keywords = ["text", "slug", "url", "ascii", "string"]
+categories = ["text-processing"]
 
 [lints]
 workspace = true
+
+[package.metadata.docs.rs]
+all-features = true

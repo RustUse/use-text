@@ -1,5 +1,6 @@
 [package]
 name = "use-text"
+publish = true
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
@@ -9,6 +10,9 @@ homepage.workspace = true
 readme = "README.md"
 rust-version.workspace = true
 description = "Composable text primitives for RustUse."
+documentation = "https://docs.rs/use-text"
+keywords = ["text", "string", "slug", "token", "line"]
+categories = ["text-processing"]
 
 [dependencies]
 use-case.workspace = true
@@ -19,3 +23,6 @@ use-word.workspace = true
 
 [lints]
 workspace = true
+
+[package.metadata.docs.rs]
+all-features = true
