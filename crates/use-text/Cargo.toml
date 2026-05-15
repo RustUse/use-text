@@ -17,6 +17,7 @@ categories = ["text-processing"]
 [dependencies]
 use-case.workspace = true
 use-line.workspace = true
+use-markdown.workspace = true
 use-slug.workspace = true
 use-token.workspace = true
 use-word.workspace = true

@@ -11,6 +11,10 @@ name = "use-line"
 version = "0.1.0"
 
 [[package]]
+name = "use-markdown"
+version = "0.1.0"
+
+[[package]]
 name = "use-slug"
 version = "0.1.0"
 
@@ -20,6 +24,7 @@ version = "0.1.0"
 dependencies = [
  "use-case",
  "use-line",
+ "use-markdown",
  "use-slug",
  "use-token",
  "use-word",

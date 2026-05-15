@@ -2,6 +2,7 @@
 members = [
     "crates/use-text",
     "crates/use-case",
+    "crates/use-markdown",
     "crates/use-slug",
     "crates/use-token",
     "crates/use-word",
@@ -22,6 +23,7 @@ version = "0.1.0"
 [workspace.dependencies]
 use-case = { version = "0.1.0", path = "crates/use-case" }
 use-line = { version = "0.1.0", path = "crates/use-line" }
+use-markdown = { version = "0.1.0", path = "crates/use-markdown" }
 use-slug = { version = "0.1.0", path = "crates/use-slug" }
 use-token = { version = "0.1.0", path = "crates/use-token" }
 use-word = { version = "0.1.0", path = "crates/use-word" }
@@ -34,6 +36,7 @@ publish = false
 versioning = "lockstep-0.x"
 first-publish-candidates = [
     "use-case",
+    "use-markdown",
     "use-slug",
     "use-token",
     "use-word",

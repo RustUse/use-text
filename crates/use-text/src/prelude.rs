@@ -6,6 +6,12 @@ pub use use_line::{
     Line, LineEnding, LineNumber, LineStats, dedent_lines, indent_lines, line_count,
     lines_with_numbers, non_empty_line_count, normalize_line_endings, trim_lines,
 };
+pub use use_markdown::{
+    MarkdownCodeFence, MarkdownHeading, MarkdownImage, MarkdownLink, MarkdownOutline,
+    extract_code_fences, extract_frontmatter, extract_headings, extract_images, extract_links,
+    extract_outline, has_frontmatter, heading_to_anchor, is_blockquote, is_horizontal_rule,
+    is_ordered_list_item, is_unordered_list_item, markdown_to_plain_text, strip_frontmatter,
+};
 pub use use_slug::{
     Slug, SlugOptions, SlugSeparator, is_slug, normalize_slug, slug_words, slugify, truncate_slug,
 };
