@@ -1,10 +1,13 @@
 name: Release Publish Automation
 
-on:
+"on":
+    push:
+        branches:
+            - main
     workflow_dispatch:
         inputs:
             post-initial-release:
-                description: Confirm the initial manual crates.io release wave is complete and all use-text workspace crates already exist on crates.io
+                description: Confirm the initial manual crates.io release wave is complete and all published crates already exist on crates.io
                 required: true
                 type: boolean
 
@@ -14,18 +17,17 @@ permissions:
     id-token: write
 
 concurrency:
-    group: release-plz-release
+    group: release-plz-release-${{ github.ref }}
     cancel-in-progress: false
 
 jobs:
     release-plz-release:
         name: Release-plz Release
-        if: ${{ !github.event.repository.fork && inputs.post-initial-release }}
+        if: ${{ !github.event.repository.fork && ((github.event_name == 'push' && fromJSON(toJSON(vars)).CRATES_IO_AUTOPUBLISH_ENABLED == 'true') || (github.event_name == 'workflow_dispatch' && inputs.post-initial-release)) }}
         runs-on: ubuntu-latest
         env:
-            CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
             PUBLISHED_CRATES: >-
-                use-case use-slug use-token use-word use-line use-text
+              use-case use-markdown use-slug use-token use-word use-line use-text
         steps:
             - name: Check out repository
               uses: actions/checkout@v4
@@ -40,16 +42,7 @@ jobs:
                   cache-workspaces: |
                       . -> target
 
-            - name: Check publish token
-              shell: bash
-              run: |
-                  if [ -z "$CARGO_REGISTRY_TOKEN" ]; then
-                    echo "CARGO_REGISTRY_TOKEN is required for release-plz publish." >&2
-                    exit 1
-                  fi
-
             - name: Confirm published crates already exist on crates.io
-              shell: bash
               run: |
                   for crate in $PUBLISHED_CRATES; do
                       curl --fail --silent --show-error "https://crates.io/api/v1/crates/${crate}" > /dev/null
@@ -60,5 +53,4 @@ jobs:
               with:
                   command: release
               env:
-                  CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
