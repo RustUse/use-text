@@ -18,15 +18,15 @@ license = "MIT OR Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/RustUse/use-text"
 rust-version = "1.95.0"
-version = "0.1.0"
+version = "0.1.1"
 
 [workspace.dependencies]
-use-case = { version = "0.1.0", path = "crates/use-case" }
-use-line = { version = "0.1.0", path = "crates/use-line" }
+use-case = { version = "0.1.1", path = "crates/use-case" }
+use-line = { version = "0.1.1", path = "crates/use-line" }
 use-markdown = { version = "0.1.0", path = "crates/use-markdown" }
-use-slug = { version = "0.1.0", path = "crates/use-slug" }
-use-token = { version = "0.1.0", path = "crates/use-token" }
-use-word = { version = "0.1.0", path = "crates/use-word" }
+use-slug = { version = "0.1.1", path = "crates/use-slug" }
+use-token = { version = "0.1.1", path = "crates/use-token" }
+use-word = { version = "0.1.1", path = "crates/use-word" }
 
 [workspace.lints.rust]
 unsafe_code = "forbid"
