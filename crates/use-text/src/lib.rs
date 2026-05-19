@@ -2,9 +2,9 @@
 #![doc = include_str!("../README.md")]
 
 pub use use_case;
-pub use use_line;
 pub use use_markdown;
 pub use use_slug;
+pub use use_text_line;
 pub use use_token;
 pub use use_word;
 

@@ -1,6 +1,6 @@
 .PHONY: help fmt check lint test test-minimal build doc examples audit deny sbom publish-dry-run release-readiness verify
 
-PUBLISH_CRATES := use-case use-slug use-token use-word use-line use-text
+PUBLISH_CRATES := use-case use-slug use-token use-word use-text-line use-text
 SBOM_MANIFEST := crates/use-text/Cargo.toml
 
 help:

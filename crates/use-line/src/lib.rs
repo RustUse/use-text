@@ -16,11 +16,13 @@ pub struct LineNumber(usize);
 
 impl LineNumber {
     /// Creates a new 1-based line number.
+    #[must_use]
     pub const fn new(value: usize) -> Self {
         Self(value)
     }
 
     /// Returns the raw 1-based number.
+    #[must_use]
     pub const fn get(self) -> usize {
         self.0
     }
@@ -37,6 +39,7 @@ pub struct LineStats {
 
 impl LineStats {
     /// Builds stats from the input text.
+    #[must_use]
     pub fn from_text(input: &str) -> Self {
         Self {
             total: line_count(input),
@@ -58,6 +61,7 @@ pub enum LineEnding {
 
 impl LineEnding {
     /// Returns the concrete line-ending string.
+    #[must_use]
     pub const fn as_str(self) -> &'static str {
         match self {
             Self::Lf => "\n",
@@ -68,11 +72,13 @@ impl LineEnding {
 }
 
 /// Counts logical lines, ignoring a trailing empty line created only by a final line ending.
+#[must_use]
 pub fn line_count(input: &str) -> usize {
     logical_lines(input).len()
 }
 
 /// Counts logical lines whose trimmed content is not empty.
+#[must_use]
 pub fn non_empty_line_count(input: &str) -> usize {
     logical_lines(input)
         .into_iter()
@@ -81,16 +87,19 @@ pub fn non_empty_line_count(input: &str) -> usize {
 }
 
 /// Trims each logical line independently and preserves the input line-ending style when possible.
+#[must_use]
 pub fn trim_lines(input: &str) -> String {
     transform_lines(input, |line| line.trim().to_owned())
 }
 
 /// Normalizes line endings to the requested target.
+#[must_use]
 pub fn normalize_line_endings(input: &str, ending: LineEnding) -> String {
     normalize_to_lf(input).replace('\n', ending.as_str())
 }
 
 /// Prefixes each logical line with the provided indent string.
+#[must_use]
 pub fn indent_lines(input: &str, indent: &str) -> String {
     transform_lines(input, |line| {
         let mut output = String::with_capacity(indent.len() + line.len());
@@ -101,6 +110,7 @@ pub fn indent_lines(input: &str, indent: &str) -> String {
 }
 
 /// Removes the common indentation shared by non-empty lines.
+#[must_use]
 pub fn dedent_lines(input: &str) -> String {
     let ending = preferred_line_ending(input);
     let normalized = normalize_to_lf(input);
@@ -127,13 +137,14 @@ pub fn dedent_lines(input: &str) -> String {
 }
 
 /// Returns numbered logical lines.
+#[must_use]
 pub fn lines_with_numbers(input: &str) -> Vec<Line> {
     logical_lines(input)
         .into_iter()
         .enumerate()
         .map(|(index, text)| Line {
             number: LineNumber::new(index + 1),
-            text: text.to_owned(),
+            text,
         })
         .collect()
 }

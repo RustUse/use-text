@@ -26,14 +26,13 @@ release = true
 version_group = "rustuse-text"
 
 [[package]]
-name = "use-line"
+name = "use-text-line"
 release = true
 version_group = "rustuse-text"
 
 [[package]]
 name = "use-text"
 release = true
-version_group = "rustuse-text"
 changelog_update = true
 changelog_path = "./CHANGELOG.md"
 changelog_include = [
@@ -41,7 +40,7 @@ changelog_include = [
     "use-slug",
     "use-token",
     "use-word",
-    "use-line",
+  "use-text-line",
 ]
 
 [changelog]

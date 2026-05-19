@@ -27,7 +27,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             PUBLISHED_CRATES: >-
-              use-case use-markdown use-slug use-token use-word use-line use-text
+                use-case use-markdown use-slug use-token use-word use-text-line use-text
         steps:
             - name: Check out repository
               uses: actions/checkout@v4

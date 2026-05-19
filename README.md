@@ -19,7 +19,7 @@ library, and not a localization system. It stays focused on practical text primi
 | `use-slug`     | Slug and URL-safe text primitives                      |
 | `use-token`    | Simple tokenization primitives                         |
 | `use-word`     | Word-level text primitives                             |
-| `use-line`     | Line-level text primitives                             |
+| `use-text-line` | Line-level text primitives                             |
 
 ## Installation
 
@@ -27,7 +27,7 @@ Install the umbrella crate when you want the full workspace surface:
 
 ```toml
 [dependencies]
-use-text = "0.1.0"
+use-text = "0.2.0"
 ```
 
 Or install a focused crate directly:
@@ -37,6 +37,7 @@ Or install a focused crate directly:
 use-case = "0.1.0"
 use-markdown = "0.1.0"
 use-slug = "0.1.0"
+use-text-line = "0.1.0"
 ```
 
 ## Usage
@@ -102,7 +103,7 @@ assert_eq!(normalize_line_endings("alpha\r\nbeta", LineEnding::Lf), "alpha\nbeta
 
 ## Project status
 
-- Version `0.1.0` focuses on stable, practical primitives.
+- Version `0.2.0` moves line-level text helpers to the `use-text-line` package so `use-line` can belong to the geometry set.
 - Markdown helpers stay intentionally line-based and lightweight.
 - Slug behavior is intentionally ASCII-first and conservative.
 - Tokenization is deterministic and lightweight rather than language-aware.

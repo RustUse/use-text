@@ -33,6 +33,12 @@ Use the `Publish` workflow with:
 The workflow will run formatting, linting, tests, and `cargo check` before it attempts any publish
 step.
 
+## Line package migration
+
+The text line package publishes as `use-text-line` starting with version `0.1.0`. Its Rust crate
+name is `use_text_line`. The `use-text` facade release `0.2.0` reexports that crate and leaves the
+public `use-line` package name available for geometry line primitives.
+
 ## Post-initial-release automation
 
 After the first manual crates.io release wave for the `use-text` workspace,

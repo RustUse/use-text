@@ -1,8 +1,8 @@
-# use-line
+# use-text-line
 
-Composable line-level text primitives for RustUse.
+Composable line-level text primitives for `RustUse`.
 
-`use-line` provides small helpers for line counting, indentation, dedentation, and line-ending
+`use-text-line` provides small helpers for line counting, indentation, dedentation, and line-ending
 normalization. It stays explicit about logical lines and keeps the behavior predictable across
 LF, CRLF, and CR inputs.
 
@@ -19,7 +19,7 @@ LF, CRLF, and CR inputs.
 ## Example
 
 ```rust
-use use_line::{dedent_lines, line_count, lines_with_numbers, LineEnding};
+use use_text_line::{dedent_lines, line_count, lines_with_numbers, LineEnding};
 
 assert_eq!(line_count("alpha\nbeta\n"), 2);
 assert_eq!(dedent_lines("    alpha\n      beta"), "alpha\n  beta");

@@ -4,16 +4,16 @@ Composable text primitives for RustUse.
 
 `use-text` is the thin umbrella crate for the RustUse text workspace. Use it when you want the
 common prelude and reexports from `use-case`, `use-markdown`, `use-slug`, `use-token`,
-`use-word`, and `use-line` in one dependency.
+`use-word`, and `use-text-line` in one dependency.
 
 ## Reexports
 
 - `use_case`
 - `use_markdown`
 - `use_slug`
+- `use_text_line`
 - `use_token`
 - `use_word`
-- `use_line`
 
 ## Example
 

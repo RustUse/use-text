@@ -2,10 +2,6 @@ pub use use_case::{
     CaseConversion, CaseError, TextCase, detect_case, to_camel_case, to_constant_case,
     to_kebab_case, to_pascal_case, to_snake_case, to_title_case,
 };
-pub use use_line::{
-    Line, LineEnding, LineNumber, LineStats, dedent_lines, indent_lines, line_count,
-    lines_with_numbers, non_empty_line_count, normalize_line_endings, trim_lines,
-};
 pub use use_markdown::{
     MarkdownCodeFence, MarkdownHeading, MarkdownImage, MarkdownLink, MarkdownOutline,
     extract_code_fences, extract_frontmatter, extract_headings, extract_images, extract_links,
@@ -14,6 +10,10 @@ pub use use_markdown::{
 };
 pub use use_slug::{
     Slug, SlugOptions, SlugSeparator, is_slug, normalize_slug, slug_words, slugify, truncate_slug,
+};
+pub use use_text_line::{
+    Line, LineEnding, LineNumber, LineStats, dedent_lines, indent_lines, line_count,
+    lines_with_numbers, non_empty_line_count, normalize_line_endings, trim_lines,
 };
 pub use use_token::{
     Token, TokenKind, TokenSpan, TokenizerOptions, token_count, tokenize_chars, tokenize_sentences,
